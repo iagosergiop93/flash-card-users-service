@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### Iago ###
-!**/src/main/resources/bootstrap.yml
+/src/main/resources/bootstrap.yml
