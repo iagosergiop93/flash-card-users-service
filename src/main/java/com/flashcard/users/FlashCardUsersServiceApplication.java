@@ -15,20 +15,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableJpaRepositories(basePackages = "com.flashcard.users.repositories")
-@EnableSwagger2
 public class FlashCardUsersServiceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(FlashCardUsersServiceApplication.class, args);
 	}
-	
-	@Bean
-    public Docket api() { 
-        return new Docket(DocumentationType.SWAGGER_2)  
-          .select()                                  
-          .apis(RequestHandlerSelectors.any())      
-          .paths(PathSelectors.any())                          
-          .build();                                           
-    }
 
 }
