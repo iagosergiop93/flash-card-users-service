@@ -52,7 +52,7 @@ public class UserService {
 		return new Principal(user);
 	}
 	
-	public Principal login(Credentials cred) throws Throwable {
+	public Principal login(Credentials cred) throws BadRequest, ServerError {
 		User user = null;
 		
 		try {
