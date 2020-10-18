@@ -13,6 +13,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,9 +23,9 @@ import lombok.Setter;
 @Table(name = "users",
 		uniqueConstraints = { @UniqueConstraint(columnNames = {"username"}) })
 @SequenceGenerator(name = "id_pk", sequenceName = "user_seq", allocationSize = 1)
-@Getter @Setter @NoArgsConstructor
+@Getter @Setter @NoArgsConstructor @EqualsAndHashCode
 public class User {
-	
+
 	@Id
 	@Column(name = "user_id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_pk")
@@ -37,6 +39,9 @@ public class User {
 	
 	@Column(name = "username", nullable = false, unique = true)
 	private String username;
+	
+	@Column(name = "email", nullable = false, unique = true)
+	private String email;
 	
 	@Column(name = "passwd", nullable = false)
 	private String passwd;
@@ -52,22 +57,10 @@ public class User {
 	private Timestamp _updatedAt;
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
-		result = (int) (prime * result + id);
-		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-		result = prime * result + ((passwd == null) ? 0 : passwd.hashCode());
-		result = prime * result + ((role == null) ? 0 : role.hashCode());
-		result = prime * result + ((username == null) ? 0 : username.hashCode());
-		return result;
-	}
-
-	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
-				+ ", passwd=" + passwd + ", role=" + role + "]";
+				+ ", email=" + email + ", passwd=" + passwd + ", role=" + role + ", _createdAt=" + _createdAt
+				+ ", _updatedAt=" + _updatedAt + "]";
 	}
 	
 }
